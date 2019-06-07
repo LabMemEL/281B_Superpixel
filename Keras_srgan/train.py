@@ -20,7 +20,7 @@ np.random.seed(10)
 # Better to use downscale factor as 4
 downscale_factor = 4
 # Remember to change image shape if you are having different size of images
-image_shape = (384,384,3)
+image_shape = (96,96,3)
 
 # Combined network
 def get_gan_network(discriminator, shape, generator, optimizer, vgg_loss):
@@ -92,10 +92,12 @@ def train(epochs, batch_size, input_dir, output_dir, model_save_dir, number_of_i
         loss_file = open(model_save_dir + 'losses.txt' , 'a')
         loss_file.write('epoch%d : gan_loss = %s ; discriminator_loss = %f\n' %(e, gan_loss, discriminator_loss) )
         loss_file.close()
-
-        if e == 1 or e % 5 == 0:
+        
+        if e <= 40:
+        #if e == 1 or e % 5 == 0:
             Utils.plot_generated_images(output_dir, e, generator, x_test_hr, x_test_lr)
-        if e % 500 == 0:
+        #if e % 500 == 0:
+        if e == 20 or e == 25 or e == 30 or e == 40:
             generator.save(model_save_dir + 'gen_model%d.h5' % e)
             discriminator.save(model_save_dir + 'dis_model%d.h5' % e)
 

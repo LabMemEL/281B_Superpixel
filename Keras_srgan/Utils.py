@@ -162,22 +162,39 @@ def plot_generated_images(output_dir, epoch, generator, x_test_hr, x_test_lr , d
     generated_image = denormalize(gen_img)
     image_batch_lr = denormalize(image_batch_lr)
     
-    plt.figure(figsize=figsize)
+    #plt.figure(figsize=figsize)
     
-    plt.subplot(dim[0], dim[1], 1)
-    plt.imshow(image_batch_lr[value], interpolation='nearest')
-    plt.axis('off')
+    #plt.subplot(dim[0], dim[1], 1)
+    #plt.imshow(image_batch_lr[value], interpolation='nearest')
+    #plt.axis('off')
         
-    plt.subplot(dim[0], dim[1], 2)
-    plt.imshow(generated_image[value], interpolation='nearest')
-    plt.axis('off')
+    #plt.subplot(dim[0], dim[1], 2)
+    #plt.imshow(generated_image[value], interpolation='nearest')
+    #plt.axis('off')
     
-    plt.subplot(dim[0], dim[1], 3)
-    plt.imshow(image_batch_hr[value], interpolation='nearest')
-    plt.axis('off')
+    #plt.subplot(dim[0], dim[1], 3)
+    #plt.imshow(image_batch_hr[value], interpolation='nearest')
+    #plt.axis('off')
     
-    plt.tight_layout()
-    plt.savefig(output_dir + 'generated_image_%d.png' % epoch)
+    #plt.tight_layout()
+    #plt.savefig(output_dir + 'generated_image_%d.png' % epoch)
+    
+    ################Modify here to output 3 seperate images###########
+    
+    #plt.imshow(image_batch_lr[value], interpolation='nearest')
+    #plt.axis('off')
+    #plt.savefig(output_dir + 'generated_image_%d_lr.png' % epoch)
+    io.imsave(output_dir + 'generated_image_%d_lr.png' % epoch, image_batch_lr[value])
+    
+    #plt.imshow(generated_image[value], interpolation='nearest')
+    #plt.axis('off')
+    #plt.savefig(output_dir + 'generated_image_%d_sr.png' % epoch)
+    io.imsave(output_dir + 'generated_image_%d_sr.png' % epoch, generated_image[value])
+    
+    #plt.imshow(image_batch_hr[value], interpolation='nearest')
+    #plt.axis('off')
+    #plt.savefig(output_dir + 'generated_image_%d_hr.png' % epoch)
+    io.imsave(output_dir + 'generated_image_%d_hr.png' % epoch, image_batch_hr[value])
     
     #plt.show()
     
