@@ -93,11 +93,12 @@ def train(epochs, batch_size, input_dir, output_dir, model_save_dir, number_of_i
         loss_file.write('epoch%d : gan_loss = %s ; discriminator_loss = %f\n' %(e, gan_loss, discriminator_loss) )
         loss_file.close()
         
-        if e <= 40:
-        #if e == 1 or e % 5 == 0:
+        # if e <= 40:
+        if e == 1 or e % 10 == 0:
             Utils.plot_generated_images(output_dir, e, generator, x_test_hr, x_test_lr)
         #if e % 500 == 0:
-        if e == 20 or e == 25 or e == 30 or e == 40:
+        #if e == 20 or e == 25 or e == 30 or e == 40:
+        if e % 40 == 0:
             generator.save(model_save_dir + 'gen_model%d.h5' % e)
             discriminator.save(model_save_dir + 'dis_model%d.h5' % e)
 
