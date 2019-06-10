@@ -23,6 +23,8 @@ from Utils_model import VGG_LOSS
 
 image_shape = (96,96,3)
 
+np.random.seed(10)
+
 def test_model(input_hig_res, model, number_of_images, output_dir):
     
     x_test_lr, x_test_hr = Utils.load_test_data_for_model(input_hig_res, 'png', number_of_images)
