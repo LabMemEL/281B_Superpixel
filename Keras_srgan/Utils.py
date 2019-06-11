@@ -15,7 +15,7 @@ from numpy.random import randint
 from scipy.misc import imresize
 import os
 import sys
-
+from skimage import measure
 import matplotlib.pyplot as plt
 plt.switch_backend('agg')
 
@@ -208,7 +208,8 @@ def plot_test_generated_images_for_model(output_dir, generator, x_test_hr, x_tes
     gen_img = generator.predict(image_batch_lr)
     generated_image = denormalize(gen_img)
     image_batch_lr = denormalize(image_batch_lr)
-    
+
+    total_psnr = 0
     for index in range(examples):
     
         plt.figure(figsize=figsize)
@@ -227,8 +228,11 @@ def plot_test_generated_images_for_model(output_dir, generator, x_test_hr, x_tes
     
         plt.tight_layout()
         plt.savefig(output_dir + 'test_generated_image_%d.png' % index)
-    
+
+        total_psnr += measure.compare_psnr(generated_image[index], image_batch_hr[index])
         #plt.show()
+
+    return total_psnr/float(examples)
 
 # Takes LR images and save respective HR images
 def plot_test_generated_images(output_dir, generator, x_test_lr, figsize=(5, 5)):
