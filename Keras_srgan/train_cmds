@@ -1,3 +1,7 @@
 python train.py --input_dir='../SR_training_datasets/inputs_1200_96' --output_dir='./output_1200_96_1000epoch/' --model_save_dir='./model_1200_96/' --batch_size=64 --epochs=1000 --number_of_images=1200 --train_test_ratio=0.8
 
+# batch 32 ver
+mkdir ./output_1200_96_1000epoch_batch32/ ./model_1200_96_batch32/
+python train.py --input_dir='../SR_training_datasets/inputs_1200_96' --output_dir='./output_1200_96_1000epoch_batch32/' --model_save_dir='./model_1200_96_batch32/' --batch_size=32 --epochs=1000 --number_of_images=1200 --train_test_ratio=0.8
+
 python train.py --input_dir='../SR_training_datasets/BSDS200_96' --output_dir='./output_temp/' --model_save_dir='./model/' --batch_size=32 --epochs=1000 --number_of_images=200 --train_test_ratio=0.8

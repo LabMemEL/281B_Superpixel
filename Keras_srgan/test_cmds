@@ -1,0 +1,7 @@
+python test.py --input_dir='../SR_training_datasets/inputs_1200_96' --output_dir='./output_1200_96_1000epoch/' --model_save_dir='./model_1200_96/' --batch_size=64 --epochs=1000 --number_of_images=1200 --train_test_ratio=0.8 --test_type=test_model
+
+mkdir ./test_output_1200_96_100_96_test_epoch_1000/
+python test.py --input_hig_res='../SR_training_datasets/BSDS100_96_test' --output_dir='./test_output_1200_96_100_96_test_epoch1000/' --model_dir='./model_200_96_1000epoch/gen_model1000.h5' --number_of_images=100 --test_type=test_model
+
+mkdir ./test_output_1200_96_100_96_test_epoch_120/
+python test.py --input_hig_res='../SR_training_datasets/BSDS100_96_test' --output_dir='./test_output_1200_96_100_96_test_epoch_120/' --model_dir='./model_200_96_1000epoch/gen_model120.h5' --number_of_images=100 --test_type=test_model
